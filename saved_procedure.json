@@ -1,0 +1,28 @@
+{
+    "1": {
+        "procedure": "W-Band Bulk",
+        "step_1_value": 100,
+        "step_2_value": 50,
+        "step_3_value": 25,
+        "step_4_value": 20,
+        "step_5_value": 10,
+        "step_1_time": "00:00:03",
+        "step_2_time": "00:00:03",
+        "step_3_time": "00:00:03",
+        "step_4_time": "00:00:03",
+        "step_5_time": "00:00:03"
+    },
+    "2": {
+        "procedure": "TFLN",
+        "step_1_value": 12,
+        "step_2_value": 11,
+        "step_3_value": 55,
+        "step_4_value": 67,
+        "step_5_value": 1,
+        "step_1_time": "00:00:20",
+        "step_2_time": "00:00:20",
+        "step_3_time": "00:00:20",
+        "step_4_time": "00:00:20",
+        "step_5_time": "00:00:20"
+    }
+}
