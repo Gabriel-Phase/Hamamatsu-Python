@@ -116,17 +116,17 @@ padding: 0px
        <widget class="QPushButton" name="ch1_button">
         <property name="styleSheet">
          <string notr="true">QPushButton{
-	background-color: rgb(19, 38, 77);
-	color: rgb(183, 225, 161);
+	background-color: rgb(84, 110, 122);
+	color: white;
 
    }
 QPushButton:checked {
-	background-color: rgb(181, 234, 170);
-    color: rgb(0, 0, 0);
+	background-color: rgb(33, 150, 243);
+    color: white;
 }
  QPushButton::hover {
-	background-color: rgb(181, 234, 170);
-	color: rgb(0, 0, 0);
+	background-color: rgb(33, 150, 243);
+    color: white;
    }
 
 </string>
@@ -143,18 +143,19 @@ QPushButton:checked {
        <widget class="QPushButton" name="ch2_button">
         <property name="styleSheet">
          <string notr="true">QPushButton{
-	background-color: rgb(19, 38, 77);
-	color: rgb(183, 225, 161);
+	background-color: rgb(84, 110, 122);
+	color: white;
 
    }
 QPushButton:checked {
-	background-color: rgb(181, 234, 170);
-    color: rgb(0, 0, 0);
+	background-color: rgb(33, 150, 243);
+    color: white;
 }
  QPushButton::hover {
-	background-color: rgb(181, 234, 170);
-	color: rgb(0, 0, 0);
+	background-color: rgb(33, 150, 243);
+    color: white;
    }
+
 </string>
         </property>
         <property name="text">
@@ -169,18 +170,19 @@ QPushButton:checked {
        <widget class="QPushButton" name="ch3_button">
         <property name="styleSheet">
          <string notr="true">QPushButton{
-	background-color: rgb(19, 38, 77);
-	color: rgb(183, 225, 161);
+	background-color: rgb(84, 110, 122);
+	color: white;
 
    }
 QPushButton:checked {
-	background-color: rgb(181, 234, 170);
-    color: rgb(0, 0, 0);
+	background-color: rgb(33, 150, 243);
+    color: white;
 }
  QPushButton::hover {
-	background-color: rgb(181, 234, 170);
-	color: rgb(0, 0, 0);
+	background-color: rgb(33, 150, 243);
+    color: white;
    }
+
 </string>
         </property>
         <property name="text">
@@ -195,18 +197,19 @@ QPushButton:checked {
        <widget class="QPushButton" name="ch4_button">
         <property name="styleSheet">
          <string notr="true">QPushButton{
-	background-color: rgb(19, 38, 77);
-	color: rgb(183, 225, 161);
+	background-color: rgb(84, 110, 122);
+	color: white;
 
    }
 QPushButton:checked {
-	background-color: rgb(181, 234, 170);
-    color: rgb(0, 0, 0);
+	background-color: rgb(33, 150, 243);
+    color: white;
 }
  QPushButton::hover {
-	background-color: rgb(181, 234, 170);
-	color: rgb(0, 0, 0);
+	background-color: rgb(33, 150, 243);
+    color: white;
    }
+
 </string>
         </property>
         <property name="text">
@@ -251,16 +254,15 @@ text-decoration: underline;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QComboBox{
-	background-color: rgb(19, 38, 77);
-	border-color: rgb(181, 234, 170);
-	border-width: 1px;
+	border-color: rgb(193, 193, 193);
+	border-width: 2px;
     border-style: solid;
-	
-	color: rgb(255, 255, 255);
-	padding: 1px 0px 1px 3px;
+	color: black;
+	padding: 1px 0px 1px 0px;
+	border-radius: 5px;
 }
 QComboBox QAbstractItemView {
-	color: rgb(255, 255, 255);
+	color: black;
             }</string>
      </property>
     </widget>
@@ -563,12 +565,17 @@ QSpinBox QAbstractItemView {
        <widget class="QPushButton" name="step_control_button">
         <property name="styleSheet">
          <string notr="true">QPushButton{
-	background-color: rgb(255, 30, 0);
+	background-color: rgb(46, 125, 50);
 	color: rgb(255, 255, 255);
 	border-color: rgb(193, 193, 193);
 	border-width: 2px;
     border-style: solid;
+	border-radius: 5px;
    }
+QPushButton:checked {
+	background-color: rgb(245, 124, 0);
+    color: white;
+}
 
  QPushButton::hover {
 	background-color: rgb(181, 234, 170);
@@ -582,18 +589,26 @@ QSpinBox QAbstractItemView {
         <property name="checkable">
          <bool>true</bool>
         </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="pause_procedure_button">
         <property name="styleSheet">
          <string notr="true">QPushButton{
-	background-color: rgb(255, 30, 0);
+	background-color: rgb(46, 125, 50);
 	color: rgb(255, 255, 255);
 	border-color: rgb(193, 193, 193);
 	border-width: 2px;
     border-style: solid;
+	border-radius: 5px;
    }
+QPushButton:checked {
+	background-color: rgb(245, 124, 0);
+    color: white;
+}
 
  QPushButton::hover {
 	background-color: rgb(181, 234, 170);
@@ -603,6 +618,9 @@ QSpinBox QAbstractItemView {
         </property>
         <property name="text">
          <string>PAUSE PROCEDURE</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
