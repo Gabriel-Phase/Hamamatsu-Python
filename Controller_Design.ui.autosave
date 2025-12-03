@@ -267,8 +267,8 @@ QComboBox QAbstractItemView {
     <widget class="QLineEdit" name="save_procedure_input">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>110</y>
+       <x>180</x>
+       <y>100</y>
        <width>111</width>
        <height>22</height>
       </rect>

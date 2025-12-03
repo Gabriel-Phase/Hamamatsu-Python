@@ -336,6 +336,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         for procedure_id, procedure in data.items():
             self.ui.step_comboBox.addItem(procedure["procedure"])
+            self.ui.remove_comboBox.addItem(procedure["procedure"])
   
         self.ui.timer = QTimer(self.ui)
         self.ui.timer.setInterval(1000)  # 1 second
