@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>732</width>
-    <height>373</height>
+    <width>730</width>
+    <height>390</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,14 +46,13 @@ QLineEdit QAbstractItemView {
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>10</y>
+      <y>20</y>
       <width>691</width>
       <height>341</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: white;
-
 </string>
     </property>
     <property name="frameShape">
@@ -118,6 +117,7 @@ padding: 0px
          <string notr="true">QPushButton{
 	background-color: rgb(84, 110, 122);
 	color: white;
+	border-radius: 3px;
 
    }
 QPushButton:checked {
@@ -145,6 +145,7 @@ QPushButton:checked {
          <string notr="true">QPushButton{
 	background-color: rgb(84, 110, 122);
 	color: white;
+	border-radius: 3px;
 
    }
 QPushButton:checked {
@@ -172,6 +173,7 @@ QPushButton:checked {
          <string notr="true">QPushButton{
 	background-color: rgb(84, 110, 122);
 	color: white;
+	border-radius: 3px;
 
    }
 QPushButton:checked {
@@ -199,6 +201,7 @@ QPushButton:checked {
          <string notr="true">QPushButton{
 	background-color: rgb(84, 110, 122);
 	color: white;
+	border-radius: 3px;
 
    }
 QPushButton:checked {
