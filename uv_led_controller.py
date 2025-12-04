@@ -1,5 +1,16 @@
 import time
 from PyExpLabSys.drivers.hamamatsu import LCL1V5
+import serial.tools.list_ports
+
+def find_serial_port():
+    print("Searching available ports")
+
+    ports = serial.tools.list_ports.comports()
+
+    if not ports:
+        print("Unable to find any connection, makae sure your device is connected")
+    for port in ports:
+        print(f"Device - {port.device} Description - {port.description}")
 
 
 class Controller:
@@ -7,6 +18,7 @@ class Controller:
     lc_l1v5 = None
 
     def __init__(self):
+        find_serial_port()
         # connects to the conntroller through the port
         self.lc_l1v5 = LCL1V5(port='COM8')
         #sets the controller, so only the program can switch it on and off
