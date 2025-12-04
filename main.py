@@ -95,13 +95,14 @@ def update_time(self):
 def func_next_step_control(self):
     if (pos_dictonary["pos"] > 4):
         print("Step Procedure Completed")
+        self.step_control_button.setEnabled(True)
         
         self.step_control_button.setChecked(False)
         revert_color_change(self, pos_dictonary['pos'])
     else:
         if (step_dictonary[pos_dictonary["pos"]]["intensity"] == 0):
             print("Skipping Step Ending Early")
-            
+            self.step_control_button.setEnabled(True)
             self.step_control_button.setChecked(False)
             revert_color_change(self, pos_dictonary["pos"])
         else:
@@ -129,6 +130,7 @@ def func_manual_mode(self):
 
 #function that begins the process of the step cure
 def func_start_step_control(self):
+    
     pos_dictonary["pos"] = 0
     self.step_control_button.setChecked(True)
 
@@ -139,11 +141,17 @@ def func_start_step_control(self):
         step_dictonary[i]["intensity"] = int(intensity_widget.value())
         step_dictonary[i]["time"] = time_widget.text().split(":")
 
+    if (step_dictonary[0]["intensity"] == 0 or step_dictonary[0]["time"] == ["00","00","00"]):
+        print("Cannot Start Procedure")
+        self.step_control_button.setChecked(False)
+        return
+
+    self.step_control_button.setEnabled(False)
+
     pos_dictonary["pos"] += 1
     
     func_set_time_display(self, self.step1_time.text().split(":"))
     self.intensityDisplay.setText(str(self.step1_intensity.value()))
-    # self.step_display.setText( step_dictonary[0]["step"])
 
     color_change(self, pos_dictonary['pos'])
     start_timer(self)  
@@ -330,6 +338,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.step_comboBox.currentIndexChanged.connect(lambda: func_step_comboBox(self.ui))
         self.ui.save_procedure_button.clicked.connect(lambda: func_save_procedure(self.ui))
         self.ui.remove_procedure_button.clicked.connect(lambda: func_remove_procedure(self.ui))
+        self.ui.pause_procedure_button.clicked.connect(lambda: func_pause_step_control(self.ui))
         
         hide_procedure(self.ui, 2)
         data = func_open_json()
