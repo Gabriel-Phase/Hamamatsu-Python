@@ -149,13 +149,9 @@ def func_start_step_control(self):
     print("Cannot Start Procedure")
     self.step_control_button.setChecked(False)
     return
-
-
   pos_dictonary["pos"] += 1
-  
   func_set_time_display(self, self.step1_time.text().split(":"))
   self.intensityDisplay.setText(str(self.step1_intensity.value()))
-
   color_change(self, pos_dictonary['pos'])
   start_timer(self) 
 
@@ -352,6 +348,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.step_comboBox.currentIndexChanged.connect(lambda: func_step_comboBox(self.ui))
         self.ui.save_procedure_button.clicked.connect(lambda: func_save_procedure(self.ui))
         self.ui.remove_procedure_button.clicked.connect(lambda: func_remove_procedure(self.ui))
+        self.ui.pause_procedure_button.clicked.connect(lambda: func_pause_step_control(self.ui))
         
         hide_procedure(self.ui, 2)
         data = func_open_json()
