@@ -24,20 +24,25 @@ pos_dictonary = {
 }
 
 #function for the on/off button that turns on the UV controller
-def func_uv_onOff(self, controller_object):
+def func_uv_onOff(self):
 
-  controller_object.func_set_uv_intensity(int(self.intensityDisplay.text()))
+  # controller_object.func_set_uv_intensity(int(self.intensityDisplay.text()))
   uv_list = []
 
   if self.step_control_button.isChecked():
     print("Turning on the uv on... power set to", self.intensityDisplay.text())
     uv_list = func_check_ch(self, uv_list)
-    controller_object.func_uv_on(uv_list)
-    
+    # controller_object.func_uv_on(uv_list)
+    self.step_control_button.setEnabled(False)
+    self.pause_procedure_button.setEnabled(True)
+
     
   else:
     print("Turning on the uv off")
-    controller_object.func_uv_off()
+    # controller_object.func_uv_off()
+    self.step_control_button.setEnabled(True)
+    self.pause_procedure_button.setEnabled(False)
+
 
   
 
@@ -79,7 +84,7 @@ def func_set_time_display(self, time_list):
 
 #function that runs the timer
 def start_timer(self):
-  func_uv_onOff(self, controller_object)
+  func_uv_onOff(self)
   self.timer.start()
 
 #function that updates the time and signals the next time if using uv step cure
@@ -94,14 +99,14 @@ def update_time(self):
     self.timer.stop()
     if(self.step_control_button.isChecked()):
       self.step_control_button.setChecked(False)
-      func_uv_onOff(self, controller_object)
+      func_uv_onOff(self)
       func_next_step_control(self)
 
 #function that continues the next step cure process
 def func_next_step_control(self):
+
   if (pos_dictonary["pos"] > 4):
     print("Step Procedure Completed")
-    
     self.step_control_button.setChecked(False)
     revert_color_change(self, pos_dictonary['pos'])
   else:
@@ -111,7 +116,6 @@ def func_next_step_control(self):
       revert_color_change(self, pos_dictonary["pos"])
     else:
       revert_color_change(self, pos_dictonary['pos'])
-
       func_set_time_display(self, step_dictonary[pos_dictonary["pos"]]["time"])
       self.intensityDisplay.setText(str(step_dictonary[pos_dictonary["pos"]]["intensity"]))
       self.step_control_button.setChecked(True)
@@ -125,11 +129,11 @@ def func_next_step_control(self):
 def func_manual_mode(self):
   if(self.manual_box.isChecked()):
     print("Going Manual, Disabling GUI")
-    controller_object.func_manual_control_enable()
+    # controller_object.func_manual_control_enable()
     self.step_control_button.setEnabled(False)
   else:
     print("Going Program mode, enabling GUI") 
-    controller_object.func_program_control_enable()
+    # controller_object.func_program_control_enable()
     self.step_control_button.setEnabled(True)
 
 #function that begins the process of the step cure
@@ -149,9 +153,14 @@ def func_start_step_control(self):
     print("Cannot Start Procedure")
     self.step_control_button.setChecked(False)
     return
+  
   pos_dictonary["pos"] += 1
   func_set_time_display(self, self.step1_time.text().split(":"))
+
   self.intensityDisplay.setText(str(self.step1_intensity.value()))
+  self.pause_procedure_button.setChecked(False)
+  self.pause_procedure_button.setText("PAUSE PROCEDURE")
+
   color_change(self, pos_dictonary['pos'])
   start_timer(self) 
 
@@ -159,13 +168,14 @@ def func_pause_step_control(self):
   if self.pause_procedure_button.isChecked():
     self.timer.stop()
     self.step_control_button.setChecked(False)
-    func_uv_onOff(self, controller_object)
+    func_uv_onOff(self)
+    self.pause_procedure_button.setEnabled(True)
     self.pause_procedure_button.setText("RESUME PROCEDURE")
     print("Pausing UV")
   else:
     self.timer.start()
     self.step_control_button.setChecked(True)
-    func_uv_onOff(self, controller_object)
+    func_uv_onOff(self)
     self.pause_procedure_button.setText("PAUSE PROCEDURE")
     print("Starting UV")
 
@@ -349,6 +359,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.save_procedure_button.clicked.connect(lambda: func_save_procedure(self.ui))
         self.ui.remove_procedure_button.clicked.connect(lambda: func_remove_procedure(self.ui))
         self.ui.pause_procedure_button.clicked.connect(lambda: func_pause_step_control(self.ui))
+
+        self.ui.pause_procedure_button.setEnabled(False)
         
         hide_procedure(self.ui, 2)
         data = func_open_json()
